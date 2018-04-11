@@ -16,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
 		p.setDescription("Some Product Description.");
 		p.setPrice(10.0f);
 
+		Order o = new Order();
+		o.setName("First Order!");
+
+		binding.setAddToOrderListener(new AddToOrderListener());
+		binding.setOrder(o);
 		binding.setProduct(p);
 	}
 }

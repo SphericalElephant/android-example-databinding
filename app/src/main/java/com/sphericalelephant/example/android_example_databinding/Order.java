@@ -22,6 +22,7 @@ public class Order extends BaseObservable {
 
 	public void setName(String name) {
 		this.name = name;
+		notifyPropertyChanged(BR.name);
 	}
 
 	@Bindable
@@ -32,9 +33,12 @@ public class Order extends BaseObservable {
 	public void addProduct(Product product) {
 		this.products.add(product);
 		notifyPropertyChanged(BR.products);
+		notifyPropertyChanged(BR.order);
+		notifyPropertyChanged(BR.productCount);
 	}
 
-	public String productCount() {
+	@Bindable
+	public String getProductCount() {
 		return String.valueOf(products.size());
 	}
 }

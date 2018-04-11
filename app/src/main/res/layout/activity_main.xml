@@ -5,11 +5,15 @@
 
         <variable
             name="product"
-            type="com.sphericalelephant.example.android_example_databinding.Product"/>
+            type="com.sphericalelephant.example.android_example_databinding.Product" />
 
         <variable
             name="order"
-            type="com.sphericalelephant.example.android_example_databinding.Order"/>
+            type="com.sphericalelephant.example.android_example_databinding.Order" />
+
+        <variable
+            name="addToOrderListener"
+            type="com.sphericalelephant.example.android_example_databinding.AddToOrderListener" />
     </data>
 
     <LinearLayout
@@ -20,33 +24,45 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{order.name}"/>
+            android:text="@{order.name}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{order.productCount}"/>
+            android:text="@{order.productCount}" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_product"
-            />
+            android:onClick="@{() -> addToOrderListener.addToOrder(order, product)}"
+            android:text="@string/add_product" />
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/order_name"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> addToOrderListener.renameOrder(view, order)}"
+            android:text="@string/rename_order"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{product.name}"/>
+            android:text="@{product.name}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{product.description}"/>
+            android:text="@{product.description}" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{product.displayPrice}"/>
+            android:text="@{product.displayPrice}" />
     </LinearLayout>
 
 </layout>
